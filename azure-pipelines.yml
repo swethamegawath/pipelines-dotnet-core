@@ -22,5 +22,16 @@ steps:
     publishWebProjects: true
     arguments: '-o pipelines'
     zipAfterPublish: true
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Learn_AZ(19b8edc1-a438-4c87-b432-9d66add43233)'
+    appType: 'webApp'
+    WebAppName: 'devopspipelinesdemo'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'devops'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'    
     
  
